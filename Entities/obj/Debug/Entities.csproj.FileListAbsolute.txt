@@ -1,0 +1,2 @@
+E:\APEC\Projects\APEC.DOCS\Entities\obj\Debug\Entities.csprojAssemblyReference.cache
+E:\APEC\Projects\APEC.DOCS\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache

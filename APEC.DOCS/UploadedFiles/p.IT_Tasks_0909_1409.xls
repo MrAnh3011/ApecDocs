@@ -1,0 +1,66 @@
+
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+
+<table border="1">
+	<thead>
+	<tr>
+					<th>Project</th>
+					<th>Task</th>
+					<th>Created on</th>
+					<th>Deadline</th>
+					<th>Created by</th>
+					<th>Responsible person</th>
+					<th>Status</th>
+					<th>Modified on</th>
+					<th>Closed on</th>
+					<th>Time spent</th>
+			</tr>
+	</thead>
+
+	<tbody>
+			<tr>
+			<td></td><td>p.IT - Cài đặt hệ thống FileServer</td><td>02.09.2019 12:58:16</td><td>06.09.2019 09:00:00</td><td>Chien CA</td><td>HÀO NGUYỄN</td><td>Pending</td><td>04.09.2019 15:52:20</td><td></td><td></td>		</tr>
+			<tr>
+			<td></td><td>&nbsp;&nbsp;&nbsp;Thông tin hệ thống sau khi Setup sửa lỗi...</td><td>08.09.2019 11:23:24</td><td>11.09.2019 18:00:00</td><td>Chien CA</td><td>Chien CA</td><td>Pending</td><td>08.09.2019 11:23:24</td><td></td><td></td>		</tr>
+			<tr>
+			<td></td><td>[IT] -Nhiệm vụ tháng 9</td><td>04.09.2019 14:47:08</td><td></td><td>Khuất Cường</td><td>Khuất Cường</td><td>Pending</td><td>08.09.2019 11:10:32</td><td></td><td></td>		</tr>
+			<tr>
+			<td>Triển khai BITRIX24 - APEC GROUP</td><td>Đào tạo, hướng dẫn cho Leader phòng ban tìm hiểu BITRIX - 16h -  05/09/2019 !</td><td>04.09.2019 15:06:30</td><td></td><td>Chien CA</td><td>Thị Thu Hằng Đinh</td><td>Pending</td><td>06.09.2019 14:24:34</td><td></td><td></td>		</tr>
+			<tr>
+			<td>Triển khai BITRIX24 - APEC GROUP</td><td>Hạn cho việc đăng ký:
+- Với phòng ban – đăng ký cán bộ phụ trách dự án BITRIX của phòng.
+- Với các nhân sự APEC GROUP chưa có account hoặc chưa accept invite – join/đăng ký vào hệ thống.
+
+Tới 17h - thứ 3 (10/09), p.IT sẽ chốt thông tin và kết xuất th</td><td>06.09.2019 14:25:01</td><td></td><td>Chien CA</td><td>Chien CA</td><td>Pending</td><td>06.09.2019 14:25:01</td><td></td><td></td>		</tr>
+			<tr>
+			<td>p.IT - APECGROUP</td><td>Tạo module tuyển dụng trên web: APECGROUP.NET</td><td>08.09.2019 13:54:32</td><td>11.09.2019 18:00:00</td><td>Chien CA</td><td>Ho Quyet</td><td>Pending</td><td>08.09.2019 14:23:24</td><td></td><td></td>		</tr>
+			<tr>
+			<td>p.IT - APECGROUP</td><td>V/v thử nghiệm toàn thị trường chỉ số đầu tư VNDIAMOND, VNFINSELECT, VNFINLEAD (Từ 09-13/09/2019)</td><td>02.09.2019 13:33:31</td><td>13.09.2019 18:00:00</td><td>Chien CA</td><td>Ho Quyet</td><td>Pending</td><td>08.09.2019 14:23:54</td><td></td><td></td>		</tr>
+			<tr>
+			<td>p.IT - APECGROUP</td><td>&nbsp;&nbsp;&nbsp;V/v thử nghiệm toàn thị trường chỉ số đầu tư VNDIAMOND, VNFINSELECT, VNFINLEAD (Từ 09-13/09/2019)</td><td>02.09.2019 13:33:31</td><td>13.09.2019 18:00:00</td><td>Chien CA</td><td>Ho Quyet</td><td>Pending</td><td>08.09.2019 14:19:41</td><td></td><td></td>		</tr>
+			<tr>
+			<td>p.IT - APECGROUP</td><td>&nbsp;&nbsp;&nbsp;V/v thử nghiệm toàn thị trường chỉ số đầu tư VNDIAMOND, VNFINSELECT, VNFINLEAD (Từ 09-13/09/2019)</td><td>02.09.2019 13:33:32</td><td>13.09.2019 18:00:00</td><td>Chien CA</td><td>HÀO NGUYỄN</td><td>Pending</td><td>08.09.2019 14:19:41</td><td></td><td></td>		</tr>
+			<tr>
+			<td>p.IT - APECGROUP</td><td>[APEC.Monitor_App] Hiệu suất sử dụng tài nguyên, hạ tầng Server - APS.Application</td><td>06.09.2019 17:19:56</td><td></td><td>Chien CA</td><td>Ho Quyet</td><td>Pending</td><td>08.09.2019 14:24:26</td><td></td><td></td>		</tr>
+			<tr>
+			<td>p.IT - APECGROUP</td><td>[APEC.Monitor_Web] Hiệu suất sử dụng tài nguyên, hạ tầng Server - APECGROUP.VPS</td><td>06.09.2019 17:22:16</td><td></td><td>Chien CA</td><td>Vinh Nguyen</td><td>Pending</td><td>08.09.2019 14:24:50</td><td></td><td></td>		</tr>
+			<tr>
+			<td>p.IT - APECGROUP</td><td>[APEC.Monitor_Network_Wifi] Hiệu suất sử dụng tài nguyên mạng Internet người dùng - APECGROUP</td><td>06.09.2019 17:25:28</td><td></td><td>Chien CA</td><td>HÀO NGUYỄN</td><td>Pending</td><td>08.09.2019 14:25:08</td><td></td><td></td>		</tr>
+			<tr>
+			<td>p.IT - APECGROUP</td><td>[APEC.Monitor_Network_FileServer] Hiệu suất sử dụng tài nguyên FileServer người dùng - APECGROUP</td><td>06.09.2019 17:28:33</td><td></td><td>Chien CA</td><td>HÀO NGUYỄN</td><td>Pending</td><td>08.09.2019 14:25:26</td><td></td><td></td>		</tr>
+			<tr>
+			<td>p.IT - APECGROUP</td><td>[APEC.Monitor_Network_VCenter] Hiệu suất sử dụng tài nguyên các Server trên VCenter - APECGROUP</td><td>06.09.2019 17:44:39</td><td></td><td>Chien CA</td><td>HÀO NGUYỄN</td><td>Pending</td><td>08.09.2019 14:25:45</td><td></td><td></td>		</tr>
+			<tr>
+			<td>p.IT - APECGROUP</td><td>&nbsp;&nbsp;&nbsp;[APEC.Monitor_GhiAm] Hiệu suất sử dụng hệ thống Ghi Âm - APECGROUP</td><td>06.09.2019 17:47:25</td><td></td><td>Chien CA</td><td>Khuất Cường</td><td>Pending</td><td>08.09.2019 14:26:00</td><td></td><td></td>		</tr>
+			<tr>
+			<td>p.IT - APECGROUP</td><td>&nbsp;&nbsp;&nbsp;Monitor hệ thống Mandala Hotel</td><td>08.09.2019 14:27:34</td><td></td><td>Chien CA</td><td>Chien CA</td><td>Pending</td><td>08.09.2019 14:27:34</td><td></td><td></td>		</tr>
+			<tr>
+			<td>p.IT - APECGROUP</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monitor hệ thống Mandala Hotel</td><td>08.09.2019 14:27:35</td><td></td><td>Chien CA</td><td>hung nguyen duc</td><td>Pending</td><td>08.09.2019 14:27:35</td><td></td><td></td>		</tr>
+			<tr>
+			<td>p.IT - APECGROUP</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monitor hệ thống Mandala Hotel</td><td>08.09.2019 14:27:35</td><td></td><td>Chien CA</td><td>HÀO NGUYỄN</td><td>Pending</td><td>08.09.2019 14:27:35</td><td></td><td></td>		</tr>
+			<tr>
+			<td>PM. Trái phiếu  ABond</td><td>App Abond</td><td>04.09.2019 16:30:05</td><td></td><td>thiện trần</td><td>thiện trần</td><td>Pending</td><td>04.09.2019 17:07:11</td><td></td><td></td>		</tr>
+			<tr>
+			<td> Apec Reals</td><td>Fix bug</td><td>05.09.2019 09:53:14</td><td>13.09.2019 17:00:00</td><td>thiện trần</td><td>Ho Quyet</td><td>Pending</td><td>05.09.2019 15:25:02</td><td></td><td>01:00:00</td>		</tr>
+		</tbody>
+</table>

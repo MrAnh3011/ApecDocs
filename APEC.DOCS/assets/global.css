@@ -1,0 +1,61 @@
+﻿@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+    #tbl-docs thead, #tbl-docs tbody, #tbl-docs th, #tbl-docs td, #tbl-docs tr { display: block; }
+
+    #tbl-docs thead tr {
+        left: -9999px;
+        position: absolute;
+        top: -9999px;
+    }
+
+    #tbl-docs tr { border: 1px solid #ccc; }
+
+    #tbl-docs td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        min-height: 15px;
+        padding: 8px 8px 8px 50% !important;
+        position: relative;
+    }
+
+    #tbl-docs td:before {
+        left: 6px;
+        padding-right: 10px;
+        position: absolute;
+        top: 6px;
+        white-space: nowrap;
+        width: 45%;
+    }
+
+    #tbl-docs td:nth-of-type(1):before { content: "STT"; }
+
+    #tbl-docs td:nth-of-type(2):before { content: "Mã văn bản"; }
+
+    #tbl-docs td:nth-of-type(3):before { content: "Số hiệu văn bản"; }
+
+    #tbl-docs td:nth-of-type(4):before { content: "Tên tài liệu"; }
+
+    #tbl-docs td:nth-of-type(5):before { content: "Danh mục TL"; }
+
+    #tbl-docs td:nth-of-type(6):before { content: "Mô tả"; }
+
+    #tbl-docs td:nth-of-type(7):before { content: "Cơ quan ban hành"; }
+
+    #tbl-docs td:nth-of-type(8):before { content: "Ngày hiệu lực"; }
+
+    #tbl-docs td:nth-of-type(9):before { content: "Trạng thái"; }
+
+    #tbl-docs td:nth-of-type(10):before { content: ""; }
+
+    #tbl-docs td:nth-of-type(11):before { content: "Mô tả chi tiết"; }
+
+    #tbl-docs td:nth-of-type(12):before { content: "DocumentId"; }
+}
+@media only screen and (max-width: 540px) {
+    .portlet > .portlet-title > .actions > .btn, .portlet > .portlet-title > .actions {
+        text-align: center;
+    }
+    .portlet > .portlet-title > .actions > .btn, .portlet > .portlet-title > .actions > .btn.btn-sm, .portlet > .portlet-title > .actions > .btn-group > .btn, .portlet > .portlet-title > .actions > .btn-group > .btn.btn-sm {
+        width: 100%;
+        margin-top: 10px;
+    }
+}

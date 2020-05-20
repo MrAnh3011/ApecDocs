@@ -1,0 +1,2 @@
+E:\APEC\Projects\APEC.DOCS\Gate.Entities\Gate.Entities\obj\Debug\Gate.Entities.dll
+E:\APEC\Projects\APEC.DOCS\Gate.Entities\Gate.Entities\obj\Debug\Gate.Entities.pdb

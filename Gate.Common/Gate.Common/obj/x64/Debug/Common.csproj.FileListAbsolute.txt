@@ -1,0 +1,13 @@
+E:\APEC\Projects\APEC.DOCS\Gate.Common\Gate.Common\bin\x64\Debug\Gate.Common.dll.config
+E:\APEC\Projects\APEC.DOCS\Gate.Common\Gate.Common\bin\x64\Debug\Gate.Common.dll
+E:\APEC\Projects\APEC.DOCS\Gate.Common\Gate.Common\bin\x64\Debug\Gate.Common.pdb
+E:\APEC\Projects\APEC.DOCS\Gate.Common\Gate.Common\obj\x64\Debug\Common.csproj.CoreCompileInputs.cache
+E:\APEC\Projects\APEC.DOCS\Gate.Common\Gate.Common\obj\x64\Debug\Gate.Common.dll
+E:\APEC\Projects\APEC.DOCS\Gate.Common\Gate.Common\obj\x64\Debug\Gate.Common.pdb
+E:\APEC\Projects\APEC.DOCS\Gate.Common\Gate.Common\obj\x64\Debug\Common.csprojAssemblyReference.cache
+D:\Projects\APEC.DOCS\Gate.Common\Gate.Common\bin\x64\Debug\Gate.Common.dll.config
+D:\Projects\APEC.DOCS\Gate.Common\Gate.Common\bin\x64\Debug\Gate.Common.dll
+D:\Projects\APEC.DOCS\Gate.Common\Gate.Common\bin\x64\Debug\Gate.Common.pdb
+D:\Projects\APEC.DOCS\Gate.Common\Gate.Common\obj\x64\Debug\Common.csproj.CoreCompileInputs.cache
+D:\Projects\APEC.DOCS\Gate.Common\Gate.Common\obj\x64\Debug\Gate.Common.dll
+D:\Projects\APEC.DOCS\Gate.Common\Gate.Common\obj\x64\Debug\Gate.Common.pdb

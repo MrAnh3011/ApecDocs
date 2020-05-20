@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Owl Carousel - Ramdom order and custom navi.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="jQuery Responsive Carousel - Owl Carusel">
+    <meta name="author" content="Bartosz Wojciechowski">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href="../assets/css/bootstrapTheme.css" rel="stylesheet">
+    <!-- <link href="../assets/css/custom.css" rel="stylesheet"> -->
+
+    <!-- Owl Carousel Assets -->
+    <link href="../owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="../owl-carousel/owl.theme.css" rel="stylesheet">
+
+    <link href="../assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+  </head>
+  <body>
+      <div id="demo">
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+
+              <div id="owl-demo" class="owl-carousel">
+                
+                <div class="item orange"><h1>1</h1></div>
+                <div class="item darkCyan"><h1>2</h1></div>
+                <div class="item yellow"><h1>3</h1></div>
+                <div class="item forestGreen"><h1>4</h1></div>
+                <div class="item dodgerBlue"><h1>5</h1></div>
+                <div class="item skyBlue"><h1>6</h1></div>
+                <div class="item zombieGreen"><h1>7</h1></div>
+                <div class="item violet"><h1>8</h1></div>
+                <div class="item steelGray"><h1>9</h1></div>
+                <div class="item dodgerBlue"><h1>10</h1></div>
+                <div class="item darkCyan"><h1>11</h1></div>
+                <div class="item zombieGreen"><h1>12</h1></div>
+                <div class="item orange"><h1>13</h1></div>
+                <div class="item forestGreen"><h1>14</h1></div>
+                <div class="item skyBlue"><h1>15</h1></div>
+                <div class="item darkCyan"><h1>16</h1></div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+    <script src="../assets/js/jquery-1.9.1.min.js"></script> 
+    <script src="../owl-carousel/owl.carousel.js"></script>
+
+
+    <!-- Demo -->
+
+    <style>
+.item h1{
+	margin: inherit;
+}
+	
+.orange{
+	background: #ff8a3c;
+}
+.darkCyan{
+	background: #42bdc2;
+}
+.forestGreen{
+	background: #7fc242;
+}
+.yellow {
+	background: #ffd800;
+}
+.dodgerBlue {
+	background: #388bd1;
+}
+.skyBlue {
+	background: #a1def8;
+}
+.zombieGreen {
+	background: #3fbf79;
+}
+.violet {
+	background: #db6ac5;
+}
+.yellowLight {
+	background: #fee664;
+}
+.steelGray {
+	background: #cad3d0;
+}
+
+    #owl-demo .item{
+      display: block;
+      padding: 30px 0px;
+      margin: 5px;
+      color: #FFF;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      text-align: center;
+    }
+    .owl-theme .owl-controls .owl-buttons div {
+      padding: 5px 9px;
+    }
+
+    .owl-theme .owl-buttons i{
+      margin-top: 2px;
+    }
+
+    /*To move navigation buttons outside use these settings:*/
+
+    .owl-theme .owl-controls .owl-buttons div {
+      position: absolute;
+    }
+
+    .owl-theme .owl-controls .owl-buttons .owl-prev{
+      left: -45px;
+      top: 55px; 
+    }
+
+    .owl-theme .owl-controls .owl-buttons .owl-next{
+      right: -45px;
+      top: 55px;
+    }
+    </style>
+
+
+    <script>
+    $(document).ready(function() {
+
+      //Sort random function
+      function random(owlSelector){
+        owlSelector.children().sort(function(){
+            return Math.round(Math.random()) - 0.5;
+        }).each(function(){
+          $(this).appendTo(owlSelector);
+        });
+      }
+
+      $("#owl-demo").owlCarousel({
+        navigation: true,
+        navigationText: [
+        "<i class='icon-chevron-left icon-white'></i>",
+        "<i class='icon-chevron-right icon-white'></i>"
+        ]
+		//,
+		//autoPlay: 3000
+        //Call beforeInit callback, elem parameter point to $("#owl-demo")
+        //beforeInit : function(elem){
+        //  random(elem);
+        //}
+
+      });
+
+    });
+    </script>
+
+
+    <script src="../assets/js/bootstrap-collapse.js"></script>
+    <script src="../assets/js/bootstrap-transition.js"></script>
+    <script src="../assets/js/bootstrap-tab.js"></script>
+
+    <script src="../assets/js/google-code-prettify/prettify.js"></script>
+	  <script src="../assets/js/application.js"></script>
+
+  </body>
+</html>
