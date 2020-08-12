@@ -74,9 +74,9 @@ namespace APEC.DOCS.Controllers
                                 return View();
                             }
 
-                            if (file.ContentLength > 20971520)
+                            if (file.ContentLength > 52428800)
                             {
-                                ModelState.AddModelError("Files", "Bạn vui lòng chọn file nhỏ hơn 20Mb!");
+                                ModelState.AddModelError("Files", "Bạn vui lòng chọn file nhỏ hơn 50Mb!");
                                 return View();
                             }
                             string path = Path.Combine(Server.MapPath("~/UploadedFiles"), fileName);
@@ -151,9 +151,9 @@ namespace APEC.DOCS.Controllers
                                 return View();
                             }
 
-                            if (file.ContentLength > 20971520)
+                            if (file.ContentLength > 52428800)
                             {
-                                ModelState.AddModelError("Files", "Bạn vui lòng chọn file nhỏ hơn 20Mb!");
+                                ModelState.AddModelError("Files", "Bạn vui lòng chọn file nhỏ hơn 50Mb!");
                                 return View();
                             }
                             string path = Path.Combine(Server.MapPath("~/UploadedFiles"), fileName);
@@ -279,14 +279,14 @@ namespace APEC.DOCS.Controllers
             return Json(new { ListDocs = lstDocs }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult SearchListDocs(string groupId, string docName, string docType, string orgPublish, string activeDate)
+        public JsonResult SearchListDocs(string groupId, string docName, string docType, string orgPublish, string docContent)
         {
             var sessionUser = (LoginModel)Session[CommonConstants.UserSession];
             //            string sqlGetListDocs = "select * from document d where d.documenttypeid in ( \r\nselect menuuserid\r\nfrom menuuser a\r\nwhere a.typeid = 1\r\nstart with parentid = :0 \r\nconnect by prior menuuserid = parentid\r\nunion\r\nselect menuuserid from menuuser where menuuserid = :1 )\r\nand (d.displayname like '%' || :2  ||  '%' or :2 is null) \r\nand (d.doctypename like '%' || :3  ||  '%' or :3 is null) \r\nand (d.orgpublish like '%' || :4  ||  '%' or :4 is null) \r\nand (to_char(d.activedate, 'dd/mm/yyyy')  like '%' || :5 ||  '%' or :5 is null)";
             //            List<DocumentModel> lstDocs = OracleHelper.ExecuteCommandText<DocumentModel>(ConnectionString, sqlGetListDocs, groupId, groupId, docName, docType, orgPublish, activeDate);
             List<Document> lstDocs = OracleHelper.ExecuteStoreProcedure<Document>(ConnectionString, "SP_SEARCH_DOCS", groupId,
-                docName, docType, orgPublish, activeDate, sessionUser.SessionKey);
-            return Json(new { ListDocs = lstDocs, ActiveDate = activeDate }, JsonRequestBehavior.AllowGet);
+                docName, docType, orgPublish, docContent, sessionUser.SessionKey);
+            return Json(new { ListDocs = lstDocs}, JsonRequestBehavior.AllowGet);
         }
         
         public JsonResult ChangeDocumentUpload(string docName)

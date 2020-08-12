@@ -57,7 +57,7 @@ namespace APEC.DOCS.Models
         public string OrgPublish { get; set; }
 
         [Column(Name = "DOCTYPENAME")]
-        [Display(Name = "Kiểu văn bản")]
+        [Display(Name = "Tên dự án")]
         [StringLength(400, ErrorMessage = "Bạn không được nhập quá 20 kí tự")]
 //        [Required(ErrorMessage = "Danh mục tài liệu không được để trống")]
         public string DocTypeName { get; set; }

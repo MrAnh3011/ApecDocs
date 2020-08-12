@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/APEC.DOCS/bin/Releases/assets/admin/layout/css/themes
+/APEC.DOCS/bin/Releases/assets/admin/layout/img

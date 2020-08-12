@@ -81,3 +81,4 @@ D:\Projects\APEC.DOCS\APEC.DOCS\obj\Release\APEC.DOCS.csproj.CoreCompileInputs.c
 D:\Projects\APEC.DOCS\APEC.DOCS\obj\Release\APEC.DOCS.csproj.CopyComplete
 D:\Projects\APEC.DOCS\APEC.DOCS\obj\Release\APEC.DOCS.dll
 D:\Projects\APEC.DOCS\APEC.DOCS\obj\Release\APEC.DOCS.pdb
+D:\Projects\APEC.DOCS\APEC.DOCS\bin\Oracle.DataAccess.dll

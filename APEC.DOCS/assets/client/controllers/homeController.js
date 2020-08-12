@@ -288,7 +288,6 @@ $(document).ready(function () {
                 var listMenu = result.ListMenu;
                 var listAll = result.ListAllMenu;
 
-
                 BindParentMenu(listAll, listMenu);
 
                 var unionList = pItems.concat(listMenu).filter(function (o) {
@@ -298,16 +297,6 @@ $(document).ready(function () {
                 var list = BindMenu(unionList);
                 var listSelect = BindMenuSelect(unionList);
 
-                //                $('#group-name').select2({
-                //                    placeholder: 'Search for an option',
-                //                    data: { results: list, text: "text" },
-                //                    formatSelection: function (item) {
-                //                        return item.text;
-                //                    },
-                //                    formatResult: function (item) {
-                //                        return item.text;
-                //                    }
-                //                });
                 $("#group-name").select2ToTree({ treeData: { dataArr: listSelect } });
                 $('#doctype-tree').jstree({
                     'core': {
@@ -318,36 +307,6 @@ $(document).ready(function () {
                         "check_callback": true,
                         'data': list
                     },
-                    //                    contextmenu: {
-                    //                        items: {
-                    //                            "create": {
-                    //                                "separator_before": false,
-                    //                                "separator_after": true,
-                    //                                "label": "Thêm mới",
-                    //                                "action": function (obj) { this.create(obj); }
-                    //                            },
-                    //                            "rename": {
-                    //                                "separator_before": false,
-                    //                                "separator_after": false,
-                    //                                "label": "Thay tên",
-                    //                                "action": function (obj) { this.rename(obj); }
-                    //                            },
-                    //                            "remove": {
-                    //                                "separator_before": false,
-                    //                                "icon": false,
-                    //                                "separator_after": false,
-                    //                                "label": "Di chuyển",
-                    //                                "action": function (obj) {
-                    //                                    if (this.is_selected(obj)) {
-                    //                                        this.remove();
-                    //                                    }
-                    //                                    else {
-                    //                                        this.remove(obj);
-                    //                                    }
-                    //                                }
-                    //                            }
-                    //                        }
-                    //                    },
                     'contextmenu': {
                         'items': function (n) {
                             var tmp = $.jstree.defaults.contextmenu.items();
@@ -401,17 +360,11 @@ $(document).ready(function () {
             Action: id.includes('j') ? 'Create' : 'Edit'
         };
 
-        //        SaveDocTypeCallBack(model,
-        //            function callback(result) {
-        //                $('#doctype-tree').jstree(true).set_id(data.node, docTypeId);
-        //            });
-
         SaveDocType(model).then(res => {
             $('#doctype-tree').jstree(true).set_id(data.node, res);
         }).catch((err) => {
             console.log(err);
         });
-
     });
     $('#doctype-tree').bind('delete_node.jstree', function (e, data) {
         var id = data.node.id;
@@ -460,7 +413,7 @@ function searchListDocs() {
         var docName = $('#doc-name').val();
         var docType = $('#doc-type').val();
         var orgPublish = $('#org-publish').val();
-        var activeDate = $('#active-date').val();
+        var docContent = $('#doc-content').val();
 
         $.ajax({
             url: "/Home/SearchListDocs",
@@ -469,7 +422,7 @@ function searchListDocs() {
                 docName: docName,
                 docType: docType,
                 orgPublish: orgPublish,
-                activeDate: activeDate
+                docContent: docContent
             },
             dataType: "json",
             type: "POST",
@@ -493,9 +446,9 @@ function searchListDocs() {
                         var docName = rs[i].DocumentName.split(",");
                         if (docName.length === 1) {
                             if (docName[0].includes('.ppt') ||
-                                docName[0].includes('.pptx') ||
+                                docName[0].includes('.pptx')||
                                 docName[0].includes('.doc') ||
-                                docName[0].includes('.docx') ||
+                                docName[0].includes('.docx')||
                                 docName[0].includes('.xls') ||
                                 docName[0].includes('.xlsx')) {
                                 displayName = "<a target='_blank' href='https://view.officeapps.live.com/op/embed.aspx?src=http://docs.apec.com.vn/UploadedFiles/" +

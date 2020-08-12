@@ -1,0 +1,178 @@
+﻿@using APEC.DOCS.Models.BO
+@model APEC.DOCS.Models.DocumentModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var lstDocName = (string[])ViewBag.ListDocName;
+}
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="page-title caption-subject font-red-sunglo bold uppercase">
+            Cập nhật <small>tài liệu & văn bản</small>
+
+        </h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <i class="fa fa-home"></i>
+                    <a href="~/Home/Index">Trang chủ</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>
+                    <span href="javascript:;">Cập nhật tài liệu và văn bản</span>
+                    @ViewBag.Err
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-body form">
+
+                @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="row">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="col-md-6">
+                            @Html.HiddenFor(model => model.DocumentId)
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DocumentTypeId, new { @class = "text-danger" })
+                                @Html.DropDownListFor(model => model.DocumentTypeId, new List<SelectListItem>(), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.DocumentTypeId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DocumentCode, new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.DocumentCode, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DocumentCode, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DisplayName, new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.DisplayName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DisplayName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DocumentNo)
+                                @Html.EditorFor(model => model.DocumentNo, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DocumentNo, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DocTypeName)
+                                @Html.EditorFor(model => model.DocTypeName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DocTypeName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OrgPublish)
+                                @Html.EditorFor(model => model.OrgPublish, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OrgPublish, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Ext)
+                                @Html.EditorFor(model => model.Ext, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Ext, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ExpireLink)
+                                @Html.EditorFor(model => model.ExpireLink, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExpireLink, "", new { @class = "text-danger" })
+                            </div>
+                            @* <div class="form-group form-check"> *@
+                            @*     <input type="checkbox" class="form-check-input" id="exampleCheck1"> *@
+                            @*     <label class="form-check-label" for="exampleCheck1">Hiệu lực</label> *@
+                            @* </div> *@
+                            <div class="form-group">
+                                @* @Html.CheckBoxFor(model => model.Status, new {htmlAttributes = new {@class = "form-control icheck" } }) *@
+                                @* @Html.LabelFor(model => model.Status) *@
+
+                                @Html.RadioButtonFor(model => model.Status, 1, new { @checked = true }) Hiệu lực
+
+                                @Html.RadioButtonFor(model => model.Status, 0) Hết hiệu lực
+                            </div>
+                            <div class="form-group">
+                                @* @Html.CheckBoxFor(model => model.Status, new {htmlAttributes = new {@class = "form-control icheck" } }) *@
+                                @* @Html.LabelFor(model => model.Status) *@
+
+                                @Html.RadioButtonFor(model => model.IsActive, 1, new { @checked = true }) Công khai
+
+                                @Html.RadioButtonFor(model => model.IsActive, 0) Không công khai
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Files, new { @id = "lblFiles" })
+                                <br /><label class="text-danger">(Định dạng cho phép:*.txt,*.doc,*.docx,*.ppt, *.pptx,*.xls,*.xlsx,*.pdf,*.tif,*.zip,*.rar,*.xps)</label>
+                                @Html.TextBoxFor(model => model.Files, new { @class = "form-control", @type = "file", @multiple = "multiple" })
+                                @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
+                                <table id="tbl-doc-name" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td>Tên tài liệu</td>
+                                            <td>Xóa</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (lstDocName.Length > 0)
+                                        {
+                                            foreach (var item in lstDocName)
+                                            {
+                                                <tr>
+                                                    <td>@item</td>
+                                                    <td><a href='#' class='deleteDocName'><i class='fa fa-trash'></i></a></td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ActiveDate)
+                                <div class="input-icon">
+                                    <i class="fa fa-calendar"></i>
+                                    @Html.EditorFor(model => model.ActiveDate, new { htmlAttributes = new { @class = "form-control  date-picker", data_date_format = Global.JsDateFormat } })
+                                </div>
+                                @* @Html.ValidationMessageFor(model => model.ActiveDate, "", new { @class = "text-danger" }) *@
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ExpireDate)
+                                <div class="input-icon">
+                                    <i class="fa fa-calendar"></i>
+                                    @Html.EditorFor(model => model.ExpireDate, new { htmlAttributes = new { @class = "form-control  date-picker", data_date_format = Global.JsDateFormat } })
+                                </div>
+                                @* @Html.ValidationMessageFor(model => model.ActiveDate, "", new { @class = "text-danger" }) *@
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.BriefDescription)
+                                @Html.TextAreaFor(model => model.BriefDescription, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.BriefDescription, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="~/Home/Index" type="button" class="btn red">Hủy</a>
+                    <button type="submit" class="btn green">Lưu</button>
+
+                }
+                <!-- END PORTLET-->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        var docTypeId = '@(ViewBag.DocTypeId)';
+    </script>
+    <script src="~/assets/client/controllers/actionController.js">
+    </script>
+}
+
+<!-- END PAGE CONTENT-->

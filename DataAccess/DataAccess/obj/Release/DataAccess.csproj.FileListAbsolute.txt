@@ -101,3 +101,4 @@ D:\Projects\APEC.DOCS\DataAccess\DataAccess\obj\Release\DataAccess.csproj.CoreCo
 D:\Projects\APEC.DOCS\DataAccess\DataAccess\obj\Release\DataAccess.csproj.CopyComplete
 D:\Projects\APEC.DOCS\DataAccess\DataAccess\obj\Release\DataAccess.dll
 D:\Projects\APEC.DOCS\DataAccess\DataAccess\obj\Release\DataAccess.pdb
+D:\Projects\APEC.DOCS\DataAccess\DataAccess\bin\Release\Oracle.DataAccess.dll

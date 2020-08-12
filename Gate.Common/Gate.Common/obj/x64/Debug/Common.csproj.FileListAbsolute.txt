@@ -11,3 +11,4 @@ D:\Projects\APEC.DOCS\Gate.Common\Gate.Common\bin\x64\Debug\Gate.Common.pdb
 D:\Projects\APEC.DOCS\Gate.Common\Gate.Common\obj\x64\Debug\Common.csproj.CoreCompileInputs.cache
 D:\Projects\APEC.DOCS\Gate.Common\Gate.Common\obj\x64\Debug\Gate.Common.dll
 D:\Projects\APEC.DOCS\Gate.Common\Gate.Common\obj\x64\Debug\Gate.Common.pdb
+D:\Projects\APEC.DOCS\Gate.Common\Gate.Common\obj\x64\Debug\Common.csprojAssemblyReference.cache
