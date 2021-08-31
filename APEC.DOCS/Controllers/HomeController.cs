@@ -15,7 +15,7 @@ using APEC.DOCS.Helpers;
 
 namespace APEC.DOCS.Controllers
 {
-//    [AuthorizationFilter]
+    //    [AuthorizationFilter]
     public class HomeController : BaseController
     {
         public string ConnectionString = ConfigurationManager.AppSettings.Get("OracleConnection");
@@ -74,9 +74,9 @@ namespace APEC.DOCS.Controllers
                                 return View();
                             }
 
-                            if (file.ContentLength > 52428800)
+                            if (file.ContentLength > 104857600)
                             {
-                                ModelState.AddModelError("Files", "Bạn vui lòng chọn file nhỏ hơn 50Mb!");
+                                ModelState.AddModelError("Files", "Bạn vui lòng chọn file nhỏ hơn 100Mb!");
                                 return View();
                             }
                             string path = Path.Combine(Server.MapPath("~/UploadedFiles"), fileName);
@@ -151,9 +151,9 @@ namespace APEC.DOCS.Controllers
                                 return View();
                             }
 
-                            if (file.ContentLength > 52428800)
+                            if (file.ContentLength > 104857600)
                             {
-                                ModelState.AddModelError("Files", "Bạn vui lòng chọn file nhỏ hơn 50Mb!");
+                                ModelState.AddModelError("Files", "Bạn vui lòng chọn file nhỏ hơn 100Mb!");
                                 return View();
                             }
                             string path = Path.Combine(Server.MapPath("~/UploadedFiles"), fileName);
@@ -191,13 +191,13 @@ namespace APEC.DOCS.Controllers
         public ActionResult SaveDocType(DocumentTypeModel model)
         {
             var sessionUser = (LoginModel)Session[CommonConstants.UserSession];
-            
+
             if (model.Action == "Create")
             {
                 List<DocumentType> lst = OracleHelper.ExecuteStoreProcedure<DocumentType>(ConnectionString, "sp_insert_doc_type", model.Name, model.ParentId, sessionUser.Username);
                 return Json(lst[0].MenuUserId, JsonRequestBehavior.AllowGet);
             }
-            if(model.Action == "Edit")
+            if (model.Action == "Edit")
             {
                 List<DocumentType> lst = OracleHelper.ExecuteStoreProcedure<DocumentType>(ConnectionString, "sp_update_doc_type", model.Id, model.Name, model.ParentId, sessionUser.Username);
                 return Json(lst[0].MenuUserId, JsonRequestBehavior.AllowGet);
@@ -276,19 +276,31 @@ namespace APEC.DOCS.Controllers
         {
             var sessionUser = (LoginModel)Session[CommonConstants.UserSession];
             List<Document> lstDocs = OracleHelper.ExecuteStoreProcedure<Document>(ConnectionString, "SP_GET_DOCS", id, sessionUser.SessionKey);
-            return Json(new { ListDocs = lstDocs }, JsonRequestBehavior.AllowGet);
+
+            var jsonRes = new JsonResult()
+            {
+                Data = new { ListDocs = lstDocs },
+                MaxJsonLength = Int32.MaxValue
+            };
+
+            return jsonRes;
         }
 
         public JsonResult SearchListDocs(string groupId, string docName, string docType, string orgPublish, string docContent)
         {
             var sessionUser = (LoginModel)Session[CommonConstants.UserSession];
-            //            string sqlGetListDocs = "select * from document d where d.documenttypeid in ( \r\nselect menuuserid\r\nfrom menuuser a\r\nwhere a.typeid = 1\r\nstart with parentid = :0 \r\nconnect by prior menuuserid = parentid\r\nunion\r\nselect menuuserid from menuuser where menuuserid = :1 )\r\nand (d.displayname like '%' || :2  ||  '%' or :2 is null) \r\nand (d.doctypename like '%' || :3  ||  '%' or :3 is null) \r\nand (d.orgpublish like '%' || :4  ||  '%' or :4 is null) \r\nand (to_char(d.activedate, 'dd/mm/yyyy')  like '%' || :5 ||  '%' or :5 is null)";
-            //            List<DocumentModel> lstDocs = OracleHelper.ExecuteCommandText<DocumentModel>(ConnectionString, sqlGetListDocs, groupId, groupId, docName, docType, orgPublish, activeDate);
             List<Document> lstDocs = OracleHelper.ExecuteStoreProcedure<Document>(ConnectionString, "SP_SEARCH_DOCS", groupId,
                 docName, docType, orgPublish, docContent, sessionUser.SessionKey);
-            return Json(new { ListDocs = lstDocs}, JsonRequestBehavior.AllowGet);
+
+            var jsonRes = new JsonResult()
+            {
+                Data = new { ListDocs = lstDocs },
+                MaxJsonLength = Int32.MaxValue
+            };
+
+            return jsonRes;
         }
-        
+
         public JsonResult ChangeDocumentUpload(string docName)
         {
             try
@@ -347,6 +359,14 @@ namespace APEC.DOCS.Controllers
                 case ".rar":
                     return true;
                 case ".xps":
+                    return true;
+                case ".avi":
+                    return true;
+                case ".wmv":
+                    return true;
+                case ".mov":
+                    return true;
+                case ".mp4":
                     return true;
                 default:
                     return false;

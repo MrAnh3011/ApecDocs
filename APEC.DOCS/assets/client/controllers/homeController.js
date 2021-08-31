@@ -32,16 +32,7 @@ $(window).load(function () {
     }
 });
 
-//$(window).load(function () {
-//    // Animate loader off screen
-//    $(".se-pre-con").fadeOut("slow");;
-//});
-//var sessionKey = window.localStorage.getItem('sessionKey');
 $(document).ready(function () {
-    //    Metronic.blockUI('.body');
-    //    $('#DocumentNo').number()
-    //    $('#DocumentNo').number(true, 0, decimalSeparator, thousandsSeparator);
-
 
     var table = $("#tbl-docs").DataTable({
         language: {
@@ -64,31 +55,12 @@ $(document).ready(function () {
         rowId: 'DocumentId',
         "columnDefs": [
             {
-                "targets": [10, 11],
+                "targets": [10, 11, 12],
                 "visible": false
             },
             { "width": "1%", "targets": [0, 1, 2, 4, 6, 7, 8, 9] },
             { "width": "20%", "targets": [3, 5] }
-            //           , { className: "dt-body-center", "targets": [0,7] }
         ]
-        
-//        , dom:
-//            "<'row'<'col-sm-3'l><'col-sm-6 text-center'B><'col-sm-3'f>>" +
-//                "<'row'<'col-sm-12'tr>>" +
-//            "<'row'<'col-sm-5'i><'col-sm-7'p>>"
-//        , buttons: [{
-//            extend: "excel",
-//            className: "btn btn-circle yellow",
-//            text: 'Kết xuất excel'
-//        }, {
-//                extend: "pdf",
-//                className: "btn btn-circle purple",
-//                text: 'Kết xuất excel'
-//            }
-//        ]
-        //        orderCellsTop: false,
-        //        fixedHeader: true
-        //            "scrollX": true
     });
 
 
@@ -119,8 +91,6 @@ $(document).ready(function () {
                 }
             });
     });
-
-
 
     $('#doctype-tree').on('select_node.jstree',
         function (e, data) {
@@ -157,7 +127,7 @@ $(document).ready(function () {
                                 actionDelete = "<a href='#' class='deleteDoc'><i class='fa fa-trash'></i></a>";
                             }
                             if (roleTypeStr.includes("4")) {
-                                var docName = rs[i].DocumentName.split(",");
+                                var docName = rs[i].DocumentName == null ? "" : rs[i].DocumentName.split(",");
                                 if (docName.length === 1) {
                                     if (docName[0].includes('.ppt') ||
                                         docName[0].includes('.pptx') ||
@@ -166,18 +136,18 @@ $(document).ready(function () {
                                         docName[0].includes('.xls') ||
                                         docName[0].includes('.xlsx')) {
                                         displayName = "<a target='_blank' href='https://view.officeapps.live.com/op/embed.aspx?src=http://docs.apec.com.vn/UploadedFiles/" +
-                                            encodeURI(docName[0]) +
-                                            "'><i class='fa fa-eye'></i> " + rs[i].DisplayName + "</a>";
+                                            encodeURI(docName[0]) + "'><i class='fa fa-eye'></i> " + rs[i].DisplayName + "</a>";
                                     } else if (docName[0].includes('.pdf') || docName[0].includes('.txt')) {
                                         displayName = "<a target='_blank' href='http://docs.apec.com.vn/UploadedFiles/" +
-                                            docName[0] +
-                                            "'><i class='fa fa-eye'></i> " + rs[i].DisplayName + "</a>";
+                                            docName[0] + "#toolbar=0'><i class='fa fa-eye'></i> " + rs[i].DisplayName + "</a>";
+                                    } else if (docName[0].includes('.mp4') || docName[0].includes('.mov') || docName[0].includes('.wmv')) {
+                                        displayName = "<a href = '#' class = 'detailVid'><i class='fa fa-eye'></i>" + rs[i].DisplayName + "</a>";
                                     }
                                 }
                             }
                             if (roleTypeStr.includes("5")) {
                                 actionDown = "<a href='/Files/DownloadDoc?fileName=" + rs[i].DocumentName + "'><i class='fa fa-download'></i></a>";
-                                var docName = rs[i].DocumentName.split(",");
+                                var docName = rs[i].DocumentName == null ? "" : rs[i].DocumentName.split(",");
                                 if (docName.length > 1) {
                                     actionDown = "<a href='/Files/DownloadDocZip?fileName=" + rs[i].DocumentName + "'><i class='fa fa-download'></i></a>";
                                 }
@@ -195,7 +165,8 @@ $(document).ready(function () {
                                 rs[i].Status === 1 ? '<span class="label label-sm label-success">Còn hiệu lực</span >' : '<span class="label label-sm label-danger">Hết hiệu lực</span >',
                                 actionEdit + " " + actionDelete + " " + actionDown,
                                 rs[i].BriefDescription,
-                                rs[i].DocumentId
+                                rs[i].DocumentId,
+                                rs[i].DocumentName == null ? "" : rs[i].DocumentName.split(",")[0]
                             ]);
                         }
                         table.draw(false);
@@ -217,15 +188,13 @@ $(document).ready(function () {
             }
         });
 
-    table.on('click',
-        '.deleteDoc',
+    table.on('click', '.deleteDoc',
         function (e) {
             e.preventDefault();
 
             if (confirm("Bạn có muốn xóa không ?") == false) {
                 return;
             }
-
             var nRow = $(this).parents('tr')[0];
             var data = table.rows(nRow).data()[0];
             try {
@@ -247,24 +216,39 @@ $(document).ready(function () {
                         alert(result);
                     }
                 });
-                //        Metronic.unblockUI('body');
             } catch (err) {
                 alert(err);
             }
         });
 
-    table.on('click',
-        '.detailDoc',
+    table.on('click','.detailDoc',
         function (e) {
             e.preventDefault();
-
             /* Get the row as a parent of the link that was clicked on */
-            var nRow = $(this).parents('tr')[0];
-            var data = table.rows(nRow).data()[0];
+            let nRow = $(this).parents('tr')[0];
+            let data = table.rows(nRow).data()[0];
             $('#detail-modal-title').html(data[4]);
             $('#detail-modal-body').html(data[10]);
             $('#exampleModal').modal('show');
         });
+
+    table.on('click', '.detailVid',
+        function (e) {
+            e.preventDefault();
+
+            let nRow = $(this).parents('tr')[0];
+            let data = table.rows(nRow).data()[0];
+            let content = "<video oncontextmenu='return false;' id='myVideo' width= '100%' height ='auto' autoplay controls controlsList='nodownload'>" +
+                "<source src = 'http://docs.apec.com.vn/UploadedFiles/" + data[12] +"'type = 'video/mp4' ></video >";
+
+            $('#detail-modal-title').html(data[4]);
+            $('#detail-modal-body').append(content);
+            $('#exampleModal').modal('show');
+        });
+
+    $("#exampleModal").on('hidden.bs.modal', function () {
+        $('#detail-modal-body').empty();
+    });
 
     table.on("order.dt search.dt",
         function () {
@@ -443,7 +427,7 @@ function searchListDocs() {
                         actionDelete = "<a href='#' class='deleteDoc'><i class='fa fa-trash'></i></a>";
                     }
                     if (roleTypeStr.includes("4")) {
-                        var docName = rs[i].DocumentName.split(",");
+                        var docName = rs[i].DocumentName == null ? "" : rs[i].DocumentName.split(",");
                         if (docName.length === 1) {
                             if (docName[0].includes('.ppt') ||
                                 docName[0].includes('.pptx')||
@@ -452,18 +436,18 @@ function searchListDocs() {
                                 docName[0].includes('.xls') ||
                                 docName[0].includes('.xlsx')) {
                                 displayName = "<a target='_blank' href='https://view.officeapps.live.com/op/embed.aspx?src=http://docs.apec.com.vn/UploadedFiles/" +
-                                    encodeURI(docName[0]) +
-                                    "'><i class='fa fa-eye'></i> " + rs[i].DisplayName + "</a>";
+                                    encodeURI(docName[0]) + "'><i class='fa fa-eye'></i> " + rs[i].DisplayName + "</a>";
                             } else if (docName[0].includes('.pdf') || docName[0].includes('.txt')) {
                                 displayName = "<a target='_blank' href='http://docs.apec.com.vn/UploadedFiles/" +
-                                    docName[0] +
-                                    "'><i class='fa fa-eye'></i> " + rs[i].DisplayName + "</a>";
+                                    docName[0] + "#toolbar=0'><i class='fa fa-eye'></i> " + rs[i].DisplayName + "</a>";
+                            } else if (docName[0].includes('.mp4') || docName[0].includes('.mov') || docName[0].includes('.wmw')) {
+                                displayName = "<a href = '#' class = 'detailVid'><i class='fa fa-eye'></i>" + rs[i].DisplayName + "</a>";
                             }
                         }
                     }
                     if (roleTypeStr.includes("5")) {
                         actionDown = "<a href='/Files/DownloadDoc?fileName=" + rs[i].DocumentName + "'><i class='fa fa-download'></i></a>";
-                        var docName = rs[i].DocumentName.split(",");
+                        var docName = rs[i].DocumentName == null ? "" : rs[i].DocumentName.split(",");
                         if (docName.length > 1) {
                             actionDown = "<a href='/Files/DownloadDocZip?fileName=" + rs[i].DocumentName + "'><i class='fa fa-download'></i></a>";
                         }
@@ -480,7 +464,8 @@ function searchListDocs() {
                         rs[i].Status === 1 ? '<span class="label label-sm label-success">Còn hiệu lực</span >' : '<span class="label label-sm label-danger">Hết hiệu lực</span >',
                         actionEdit + " " + actionDelete + " " + actionDown,
                         rs[i].BriefDescription,
-                        rs[i].DocumentId
+                        rs[i].DocumentId,
+                        rs[i].DocumentName == null ? "" : rs[i].DocumentName.split(",")[0]
                     ]);
                 }
                 table.draw(false);

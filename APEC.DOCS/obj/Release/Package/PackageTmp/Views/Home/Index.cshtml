@@ -1,18 +1,10 @@
 ﻿@model List<APEC.DOCS.Models.DocumentModel>
 @{
-    /**/
-
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var strRole = (string)ViewBag.RoleTypeString;
 }
 
-@* @section csss{ *@
-@*     <link href="~/Scripts/datatables/jquery.dataTables.min.css" rel="stylesheet"/> *@
-@*     <link href="~/Scripts/datatables/buttons.dataTables.min.css" rel="stylesheet"/> *@
-@*     <link href="~/Scripts/datatables/select.dataTables.min.css" rel="stylesheet"/> *@
-@*     <link href="~/Scripts/datatables/editor.dataTables.min.css" rel="stylesheet"/> *@
-@* } *@
 <div class="row">
     <div class="col-md-12">
         <h3 class="page-title">
@@ -56,7 +48,6 @@
             <div class="portlet-body form">
                 <div class="form-group col-md-12">
                     <label class="control-label">Nhóm</label>
-                    @* <input type="text" class="form-control" id="group-name" data-placeholder="Mời bạn chọn nhóm" /> *@
                     <select class="form-control" id="group-name"></select>
                 </div>
                 <div class="form-group col-md-6">
@@ -81,9 +72,6 @@
                     </div>
                 </div>
                 <div class="form-group text-center">
-                    @* <a href="#" onclick="clearForm();" class="btn btn-primary"> *@
-                    @*     <i class="fa fa-trash"></i> *@
-                    @* </a> *@
                     <button onclick="searchListDocs();" class="btn red">
                         <i class="fa fa-search"></i> Tìm kiếm
                     </button>
@@ -103,10 +91,6 @@
                 <div class="caption">
                     <i class="icon-list font-red-sunglo"></i>&nbsp;<span class="caption-subject font-red-sunglo bold uppercase">Danh sách</span>
                 </div>
-                @* <div class="tools"> *@
-                @*     <a href="" class="collapse" data-original-title="" title=""></a> *@
-                @*     <a href="" class="fullscreen" data-original-title="" title=""></a> *@
-                @* </div> *@
                 <div class="actions">
 
                     @if (strRole != null && strRole.Contains("1"))
@@ -135,24 +119,10 @@
                             <th></th>
                             <th>Mô tả chi tiết</th>
                             <th>DocumentId</th>
+                            <th>DocName</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @*                     @foreach (var item in Model) *@
-                        @*                     { *@
-                        @*                         <tr> *@
-                        @*                             <td>@item</td> *@
-                        @*                             <td>@item.DocumentCode</td> *@
-                        @*                             <td>@item.DocumentNo</td> *@
-                        @*                             <td>@item.DisplayName</td> *@
-                        @*                             <td>@item.DocTypeName</td> *@
-                        @*                             <td>@item.DisplayName</td> *@
-                        @*                             <td>@item.OrgPublish</td> *@
-                        @*                             <td>@item.ActiveDate</td> *@
-                        @*                             <td>@item.Status</td> *@
-                        @*                             <td>Tải về</td> *@
-                        @*                         </tr> *@
-                        @*                     } *@
                     </tbody>
                 </table>
             </div>
@@ -162,7 +132,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">

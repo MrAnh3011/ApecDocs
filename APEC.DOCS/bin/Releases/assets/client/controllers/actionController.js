@@ -137,5 +137,3 @@ function BindParentMenu(listAll, list) {
         }
     }
 }
-
-

@@ -269,7 +269,7 @@ function searchListDocs() {
         var docName = $('#doc-name').val();
         var docType = $('#doc-type').val();
         var orgPublish = $('#org-publish').val();
-        var docContent = $('#doc-content').val();
+        var activeDate = $('#active-date').val();
         $.ajax({
             url: "/Admin/Home/SearchListDocs",
             data: {
@@ -277,7 +277,7 @@ function searchListDocs() {
                 docName: docName,
                 docType: docType,
                 orgPublish: orgPublish,
-                docContent: docContent
+                activeDate: activeDate
             },
             dataType: "json",
             type: "POST",
